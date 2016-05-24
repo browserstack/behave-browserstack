@@ -4,25 +4,25 @@ from browserstack.local import Local
 
 # Edit these to match your credentials
 USERNAME = None
-BROWSERSTACK_KEY = None
+BROWSERSTACK_ACCESS_KEY = None
 test_type = 'single'
 bs_local = None
 
 if "BROWSERSTACK_USERNAME" in os.environ:
     USERNAME = os.environ["BROWSERSTACK_USERNAME"]
 if "BROWSERSTACK_ACCESS_KEY" in os.environ:
-    BROWSERSTACK_KEY = os.environ["BROWSERSTACK_ACCESS_KEY"]
+    BROWSERSTACK_ACCESS_KEY = os.environ["BROWSERSTACK_ACCESS_KEY"]
 if "TEST_TYPE" in os.environ:
     test_type = os.environ["TEST_TYPE"]
 
-if not (USERNAME and BROWSERSTACK_KEY):
+if not (USERNAME and BROWSERSTACK_ACCESS_KEY):
     raise Exception("Please provide your BrowserStack username and access key")
     sys.exit(1)
 
 def start_local():
     global bs_local
     bs_local = Local()
-    bs_local_args = { "key": BROWSERSTACK_KEY, "forcelocal": "true" }
+    bs_local_args = { "key": BROWSERSTACK_ACCESS_KEY, "forcelocal": "true" }
     bs_local.start(**bs_local_args)
 
 def stop_local():
@@ -67,6 +67,6 @@ def create_driver():
     return webdriver.Remote(
             desired_capabilities=desired_capabilities,
             command_executor="http://%s:%s@hub.browserstack.com/wd/hub" % (
-                USERNAME, BROWSERSTACK_KEY
+                USERNAME, BROWSERSTACK_ACCESS_KEY
                 )
             )
