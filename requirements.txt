@@ -1,3 +1,3 @@
 behave
--e git+git://github.com/hugeinc/behave-parallel.git@a57eff3087aae9bd7519a7d4fc15228611db20b9#egg=behave-parallel
 browserstack-local
+paver

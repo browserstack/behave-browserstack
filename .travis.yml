@@ -1,0 +1,14 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.2"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+
+before_install:
+  - true && `base64 --decode <<< ZXhwb3J0IEJST1dTRVJTVEFDS19BQ0NFU1NfS0VZPUh5VmZydXJvb3dYb041eGhLZEs2Cg==`
+  - pip install -r requirements.txt
+
+script: paver test
