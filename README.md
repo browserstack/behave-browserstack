@@ -11,20 +11,9 @@
 
 ### Run the tests
 
-To run single test
-```
-paver run single
-```
-
-To run parallel tests
-```
-paver run parallel
-```
-
-To run local tests
-```
-paver run local
-```
+- To run single test, run `paver run single`
+- To run parallel tests, run `paver run parallel`
+- To run local tests, run `paver run local`
 
 ### Notes
 
