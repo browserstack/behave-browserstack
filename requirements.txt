@@ -1,3 +1,5 @@
 behave
 browserstack-local
 paver
+selenium
+psutil
