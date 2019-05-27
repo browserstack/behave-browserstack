@@ -1,6 +1,6 @@
 # behave-browserstack
 
-[Behave](http://pythonhosted.org/behave/) Integration with BrowserStack.
+[Behave](https://github.com/behave/behave) Integration with BrowserStack.
 
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
