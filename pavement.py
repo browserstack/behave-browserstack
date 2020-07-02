@@ -1,6 +1,6 @@
 from paver.easy import *
 from paver.setuputils import setup
-import multiprocessing , threading , os
+import threading , os
 
 setup(
     name = "behave-browserstack",
@@ -31,7 +31,9 @@ def run(args):
             p = threading.Thread(target=run_behave_test,args=(args[0], "single",i))
             jobs.append(p)
             p.start()
-        p.join()
+            
+        for th in jobs:
+         th.join()
 
 @task
 def test():
