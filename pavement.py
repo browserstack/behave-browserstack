@@ -31,6 +31,7 @@ def run(args):
             p = threading.Thread(target=run_behave_test,args=(args[0], "single",i))
             jobs.append(p)
             p.start()
+        p.join()
 
 @task
 def test():
