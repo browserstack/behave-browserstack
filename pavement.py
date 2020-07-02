@@ -15,7 +15,7 @@ setup(
 )
 
 def run_behave_test(config, feature, task_id=0):
-    os.environ['CONFIG_FILE'] = 'config/'+config+'.json'
+    os.environ['CONFIG_FILE'] = 'config/{}.json'.format(config)
     os.environ['TASK_ID'] = str(task_id)
     sh('behave features/%s.feature' % (feature))
 
