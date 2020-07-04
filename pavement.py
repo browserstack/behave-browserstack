@@ -15,7 +15,7 @@ setup(
 )
 
 def run_behave_test(config, feature, task_id=0):
-    if(platform.system()== 'Windows'):
+    if platform.system() == 'Windows':
         sh('SET CONFIG_FILE=config/%s.json & SET TASK_ID=%s & behave features/%s.feature' % (config, task_id, feature))
     else:
         sh('export CONFIG_FILE=config/%s.json && export TASK_ID=%s && behave features/%s.feature' % (config, task_id, feature))
