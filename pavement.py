@@ -1,6 +1,6 @@
 from paver.easy import *
 from paver.setuputils import setup
-import multiprocessing
+import threading, os, platform
 
 setup(
     name = "behave-browserstack",
@@ -15,7 +15,10 @@ setup(
 )
 
 def run_behave_test(config, feature, task_id=0):
-    sh('CONFIG_FILE=config/%s.json TASK_ID=%s behave features/%s.feature' % (config, task_id, feature))
+    if platform.system() == 'Windows':
+        sh('SET CONFIG_FILE=config/%s.json & SET TASK_ID=%s & behave features/%s.feature' % (config, task_id, feature))
+    else:
+        sh('export CONFIG_FILE=config/%s.json && export TASK_ID=%s && behave features/%s.feature' % (config, task_id, feature))
 
 @task
 @consume_nargs(1)
@@ -26,9 +29,12 @@ def run(args):
     else:
         jobs = []
         for i in range(4):
-            p = multiprocessing.Process(target=run_behave_test, args=(args[0], "single", i))
+            p = threading.Thread(target=run_behave_test,args=(args[0], "single",i))
             jobs.append(p)
             p.start()
+
+        for th in jobs:
+         th.join()
 
 @task
 def test():
