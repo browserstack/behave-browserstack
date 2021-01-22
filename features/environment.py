@@ -43,5 +43,9 @@ def before_feature(context, feature):
     )
 
 def after_feature(context, feature):
+    if context.failed is True:
+        context.browser.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"failed", "reason": "At least 1 assertion failed"}}')
+    if context.failed is not True:
+        context.browser.execute_script('browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed", "reason": "All assertions passed"}}')
     context.browser.quit()
     stop_local()
