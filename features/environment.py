@@ -34,7 +34,7 @@ def before_feature(context, feature):
         if key not in desired_capabilities:
             desired_capabilities[key] = CONFIG["capabilities"][key]
 
-    if "browserstack.local" in desired_capabilities and desired_capabilities["browserstack.local"]:
+    if "bstack:options" in desired_capabilities and "local" in desired_capabilities["bstack:options"] and desired_capabilities["bstack:options"]["local"]:
         start_local()
 
     context.browser = webdriver.Remote(
