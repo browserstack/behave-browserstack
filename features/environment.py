@@ -29,12 +29,12 @@ def stop_local():
 
 def before_feature(context, feature):
     desired_capabilities = CONFIG['environments'][TASK_ID]
-    desired_capabilities['browserstack.source'] = 'behave:sample-master:v1.0'
     for key in CONFIG["capabilities"]:
         if key not in desired_capabilities:
             desired_capabilities[key] = CONFIG["capabilities"][key]
         elif key == "bstack:options":
             desired_capabilities[key].update(CONFIG["capabilities"][key])
+    desired_capabilities['bstack:options']['source'] = 'behave:sample-master:v1.1'
 
     if "bstack:options" in desired_capabilities and "local" in desired_capabilities["bstack:options"] and desired_capabilities["bstack:options"]["local"]:
         start_local()
