@@ -14,7 +14,7 @@ def step(context, selector, value):
 @then('title becomes "{title}"')
 def step(context, title):
     assert context.browser.title == title
-
-@then(u'page contains "{body}"')
-def step(context, body):
-    assert body in context.browser.page_source
+    
+@then('title contains "{title}"')
+def step(context, title):
+    assert title in context.browser.title
