@@ -11,12 +11,22 @@
   },
 
   "environments": [{
-    "browser": "chrome"
+    "browserName": "chrome",
+    "bstack:options": {
+      "os": "OS X",
+      "osVersion": "catalina"
+    }
   },{
-    "browser": "firefox"
+    "browserName": "firefox",
+    "bstack:options": {
+      "os": "Windows",
+      "osVersion": "10"
+    }
   },{
-    "browser": "safari"
-  },{
-    "browser": "internet explorer"
+    "browserName": "safari",
+    "bstack:options": {
+      "osVersion" : "16",
+      "deviceName" : "iPhone 14"
+    }
   }]
 }

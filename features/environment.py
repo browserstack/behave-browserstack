@@ -33,6 +33,8 @@ def before_feature(context, feature):
     for key in CONFIG["capabilities"]:
         if key not in desired_capabilities:
             desired_capabilities[key] = CONFIG["capabilities"][key]
+        elif key == "bstack:options":
+            desired_capabilities[key].update(CONFIG["capabilities"][key])
 
     if "bstack:options" in desired_capabilities and "local" in desired_capabilities["bstack:options"] and desired_capabilities["bstack:options"]["local"]:
         start_local()

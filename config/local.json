@@ -12,6 +12,6 @@
   },
 
   "environments": [{
-    "browser": "chrome"
+    "browserName": "chrome"
   }]
 }
