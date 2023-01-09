@@ -17,7 +17,7 @@ python3 should be installed
 * It is recommended to use a virtual environment to install dependencies. To create a virtual environment:
   ```
   python3 -m venv env
-  source env/bin/activate # on Mac
+  source env/bin/activate # on Mac/Linux
   env\Scripts\activate # on Windows
   ```
 * Install dependencies 
