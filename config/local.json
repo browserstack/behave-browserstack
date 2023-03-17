@@ -3,13 +3,15 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
 
   "capabilities": {
-    "build": "browserstack-build-1",
-    "name": "BStack local behave",
-    "browserstack.debug": true,
-    "browserstack.local": true
+    "bstack:options": {
+      "buildName": "browserstack-build-1",
+      "sessionName": "BStack local behave",
+      "debug": true,
+      "local": true
+    }
   },
 
   "environments": [{
-    "browser": "chrome"
+    "browserName": "chrome"
   }]
 }

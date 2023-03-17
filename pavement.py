@@ -28,13 +28,13 @@ def run(args):
         run_behave_test(args[0], args[0])
     else:
         jobs = []
-        for i in range(4):
-            p = threading.Thread(target=run_behave_test,args=(args[0], "single",i))
+        for i in range(3):
+            p = threading.Thread(target=run_behave_test,args=(args[0], "single", i))
             jobs.append(p)
             p.start()
 
         for th in jobs:
-         th.join()
+            th.join()
 
 @task
 def test():
