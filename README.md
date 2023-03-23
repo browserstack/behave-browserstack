@@ -11,9 +11,8 @@
 * Update `*.json` files inside the `config/` directory with your [BrowserStack Username and Access Key](https://www.browserstack.com/accounts/settings)
 
 ## Running your tests
-* To run a single test, run `paver run single`
+* To run tests, run `paver run parallel`
 * To run local tests, run `paver run local`
-* To run parallel tests, run `paver run parallel`
 
  Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
 
