@@ -34,7 +34,7 @@ def before_feature(context, feature):
             desired_capabilities[key] = CONFIG["capabilities"][key]
         elif key == "bstack:options":
             desired_capabilities[key].update(CONFIG["capabilities"][key])
-    desired_capabilities['bstack:options']['source'] = 'behave:sample-master:v1.1'
+    desired_capabilities['bstack:options']['source'] = 'behave:sample-master:v1.2'
 
     if "bstack:options" in desired_capabilities and "local" in desired_capabilities["bstack:options"] and desired_capabilities["bstack:options"]["local"]:
         start_local()
