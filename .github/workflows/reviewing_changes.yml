@@ -1,0 +1,68 @@
+# This job is to test different npm profiles in master branch against Pull Request raised
+# This workflow targets behave
+
+name: Behave Test workflow for Python on comment RUN_TESTS
+
+on:
+  issue_comment:
+    branches: [ sdk ]
+    types: [ created ]
+
+jobs:
+  comment-run:
+    if: always() && github.event.issue.pull_request && contains(github.event.comment.body, 'RUN_TESTS')
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        python: [3.7, 3.10, 3.11]
+        os: [ macos-latest, windows-latest, ubuntu-latest ]
+    name: Behave Repo ${{ matrix.python }} - ${{ matrix.os }} Sample
+    env:
+      BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+      BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
+    steps:
+      # - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
+      #   id: check-membership
+      #   with:
+      #     github-token: ${{ secrets.BROWSERSTACK_TOKEN }}
+      #     script: |
+      #       const creator = context.payload.sender.login
+      #       const result = await github.rest.teams.getMembershipForUserInOrg({
+      #         org: context.repo.owner,
+      #         team_slug: 'asi-devs',
+      #         username: creator
+      #       }).catch((err) => ({status: err.status, response: err.response}));
+      #       console.log(`The comment creator ${creator} membership Status : ${result.status} Response : ${JSON.stringify(result.response)}`)
+      #       if (result.status !== 200) {
+      #         core.setFailed('User is not part of the owner team!')
+      #       }
+
+      - uses: actions/checkout@v3
+        with:
+          ref: refs/pull/${{ github.event.issue.number }}/head
+
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Print python version
+        run: python --version
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Print browserstack-sdk version
+        run: browserstack-sdk --version
+
+      - name: Run single tests 
+        run: paver run single
+
+      - name: Run local tests 
+        run: paver run local
+      
+      - name: Run parallel tests 
+        run: paver run parallel
