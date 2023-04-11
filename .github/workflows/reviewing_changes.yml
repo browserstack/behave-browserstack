@@ -1,7 +1,7 @@
 # This job is to test different profiles in sdk branch against Pull Requests raised
 # This workflow targets behave
 
-name: Behave Test workflow for Python from workflow_dispatch
+name: Python SDK Test workflow on workflow_dispatch
 
 on:
   workflow_dispatch:
