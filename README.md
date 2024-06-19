@@ -4,28 +4,62 @@
 
 ![BrowserStack Logo](https://d98b8t1nnulk5.cloudfront.net/production/images/layout/logo-header.png?1469004780)
 
+## Prerequisite
+```
+python3 should be installed
+```
+
 ## Setup
+* Clone the repo 
+  ```
+  git clone -b sdk https://github.com/browserstack/behave-browserstack.git
+  ```
+* It is recommended to use a virtual environment to install dependencies. To create a virtual environment:
+  ```
+  python3 -m venv env
+  source env/bin/activate # on Mac/Linux
+  env\Scripts\activate # on Windows
+  ```
+* Install dependencies 
+  ```
+  pip install -r requirements.txt
+  ```
 
-* Clone the repo
-* Install dependencies `pip install -r requirements.txt`
-* Update `*.json` files inside the `config/` directory with your [BrowserStack Username and Access Key](https://www.browserstack.com/accounts/settings)
+## Set BrowserStack Credentials
+* Add your BrowserStack username and access key in the `browserstack.yml` config fle.
+* You can also export them as environment variables, `BROWSERSTACK_USERNAME` and `BROWSERSTACK_ACCESS_KEY`:
+  #### For Linux/MacOS
+    ```
+    export BROWSERSTACK_USERNAME=<browserstack-username>
+    export BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
+    ```
+  #### For Windows
+    ```
+    set BROWSERSTACK_USERNAME=<browserstack-username>
+    set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
+    
+    setx BROWSERSTACK_USERNAME=<browserstack-username>
+    setx BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
+    ```
 
-## Running your tests
-* To run tests, run `paver run parallel`
-* To run local tests, run `paver run local`
+## Running tests
 
- Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
+* To run sample tests:
+  - To run the sample tests in parallel across the platforms defined in the `browserstack.yml` file, run:
+    ```
+    browserstack-sdk behave features/test.feature
+    ```
+* To run tests on locally hosted websites:
+  - To run the local test in parallel across the platforms defined in the `browserstack.yml` file, run:
+    ```
+    browserstack-sdk behave features/local-test.feature
+    ```
 
 ## Notes
 * You can view your test results on the [BrowserStack Automate dashboard](https://www.browserstack.com/automate)
-* To test on a different set of browsers, check out our [platform configurator](https://www.browserstack.com/automate/python#setting-os-and-browser)
-* You can export the environment variables for the Username and Access Key of your BrowserStack account
-  
-  ```
-  export BROWSERSTACK_USERNAME=<browserstack-username> &&
-  export BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
-  ```
-  
+* To test on a different set of browsers, check out our [platform configurator](https://www.browserstack.com/docs/automate/selenium/sdk-config-generator)
+* Understand how many parallel sessions you need by using our [Parallel Test Calculator](https://www.browserstack.com/automate/parallel-calculator?ref=github)
+
 ## Additional Resources
 * [Documentation for writing Automate test scripts in Python](https://www.browserstack.com/automate/python)
 * [Customizing your tests on BrowserStack](https://www.browserstack.com/automate/capabilities)
