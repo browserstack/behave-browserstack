@@ -22,7 +22,7 @@ def step(context, selector):
     item = context.browser.find_element(By.XPATH, selector)
     item_in_cart = item.text
     assert item_in_cart == context.item_to_add
-
+    
 @then('title contains "{title}"')
 def step(context, title):
     assert title in context.browser.title

@@ -1,4 +1,4 @@
-Feature: BrowserStack Demo
+Feature: BStack Sample Testing
     Scenario: Add product to cart
         When visit url "https://bstackdemo.com/"
         When item with xpath '//*[@id="1"]/p' is present to be added to cart
