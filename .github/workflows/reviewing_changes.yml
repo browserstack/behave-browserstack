@@ -16,8 +16,9 @@ jobs:
     strategy:
       fail-fast: false
       max-parallel: 3
+      # python 3.7 is not found in github actions runs, hence removing 3.7 version from matrix and adding lts 3.12 version
       matrix:
-        python: ['3.7', '3.10', '3.11']
+        python: ['3.10', '3.11', '3.12']
         os: [ macos-latest, windows-latest, ubuntu-latest ]
     name: Behave Repo ${{ matrix.python }} - ${{ matrix.os }} Sample
     env:
