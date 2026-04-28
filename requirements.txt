@@ -2,4 +2,4 @@ behave
 browserstack-local
 selenium
 psutil
-browserstack-sdk
+browserstack-sdk @ https://sdk-assets.browserstack.com/python/browserstack_sdk-latest.tar.gz
